@@ -46,11 +46,13 @@ with mp_pose.Pose(
     # Draw the pose annotation on the image.
     image.flags.writeable = True
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    mp_drawing.draw_landmarks(image,results.pose_landmarks,mp_pose.POSE_CONNECTIONS,landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
+    mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                              landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
 
     # mp_drawing.plot_landmarks(results.pose_world_landmarks, mp_pose.POSE_CONNECTIONS)
 
-    keypoints = [{'X': data.x, 'Y': data.y, 'Z': data.z} for data in results.pose_landmarks.landmark]
+    keypoints = [{'X': data.x, 'Y': data.y, 'Z': data.z}
+                 for data in results.pose_landmarks.landmark]
 
     cv2.imshow('MediaPipe Pose', image)
     if cv2.waitKey(5) & 0xFF == ord('q'):
@@ -73,11 +75,11 @@ def calculateDistance(C1, C2):
     dist += ((C1['Z']) - (C2['Z']))**2
     result = math.sqrt(dist)
     return result
+
+
 distance = calculateDistance(arc1, arc4)
 
 if distance < 1:
     engine = pyttsx3.init()
     engine.say('Sit straight you moron')
     engine.runAndWait()
-
-
