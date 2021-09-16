@@ -5,10 +5,24 @@ import math
 import cv2
 import mediapipe as mp
 
+#Important functions to be used in pose detection
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic
-keypoints=[]
+
+
+# def CalculateTime(t):
+
+# 	while t:
+# 		mins, secs = divmod(t, 60)
+# 		timer = '{:02d}:{:02d}'.format(mins, secs)
+# 		print(timer, end="\r")
+# 		time.sleep(1)
+# 		t -= 1
+
+# 	print('Fire in the hole!!')
+
+# if sec%5==0: var = q else var = B
 
 # For webcam input:
 cap = cv2.VideoCapture(0)
@@ -37,17 +51,14 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
     # mp_drawing.plot_landmarks(results.pose_world_landmarks, mp_holistic.POSE_CONNECTIONS)
 
+    keypoints=[{'X':data.x,'Y':data.y,'Z':data.z} for data in results.pose_landmarks.landmark]
+
     cv2.imshow('MediaPipe Holistic', image)
     if cv2.waitKey(10) & 0xFF == ord('q'):
       break    
 cap.release()
 
 #To calculate the distance
-for data in results.pose_landmarks.landmark:
-  keypoints.append({'X': data.x,
-                    'Y': data.y,
-                    'Z': data.z,
-                    })
 
 for i in range(len(keypoints)):
   # print(f'{i}\n {keypoints[i]}\n\n')
@@ -56,13 +67,7 @@ for i in range(len(keypoints)):
   arc3 = keypoints[23]  # left arc
   arc4 = keypoints[24]  # hip arc
 
-
-def calculateTime():
-
-  return 0
-
-
-def calculate(C1, C2):
+def calculateDistance(C1, C2):
     dist = 0
     dist += ((C1['X']) - (C2['X']))**2
     dist += ((C1['Y']) - (C2['Y']))**2
@@ -90,8 +95,8 @@ def main():
 
 
 def TellWarning():
-    calculate(arc1,arc4)
-    response_text = 'Sit straight you moron'
+    if calculateDistance(arc1, arc4) < 0.7*0.9665996894753616:
+      response_text = 'Sit straight you moron'
 
     #Configure speech synthesis
     speech_synthesizer = speech_sdk.SpeechSynthesizer(speech_config)
