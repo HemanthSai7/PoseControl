@@ -7,5 +7,5 @@
 - <h1>Instructions:- </h1> 
 > #### [Set up your environment](./INSTRUCTIONS.md)
   - After your environment setup is complete, follow these steps.
-  - Place the camera at a such a place and height such that the camera can see the body properly.
+  - Place the camera at a such a place and height such that the camera can see the entire body properly.
   - Run the program
