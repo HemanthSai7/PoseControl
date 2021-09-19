@@ -62,7 +62,7 @@ def pose():
       result = math.sqrt(distance)
       if result < 0.7*0.9829993072752983:
         engine = pyttsx3.init()
-        engine.say('Sit straight you moron')
+        engine.say('Please sit straight')
         engine.runAndWait()
       # print(result)
       cv2.imshow('MediaPipe Pose', image)
