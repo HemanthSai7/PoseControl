@@ -1,6 +1,6 @@
 <img src="./assets/thumbnail.png">
 
-- # PoseControl
+- # 🍁 PoseControl
   - **Since the technological revolution, the health of normal human being has tainted a lot.**
   - **Over the past ten years, there is a heavy demise in the health (both physical and mental health) of the people.**
   - **To make people aware about their physical fitness, we have tried to design a process with the help of OpenCV and Mediapipe to detect wrong postures and subsequently asking the user not to be in that particular position which can harm the body.**
