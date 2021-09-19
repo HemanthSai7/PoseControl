@@ -1,3 +1,4 @@
+<img src="./assets/thumbnail.jpg">
 - # PoseControl
   - **Since the technological revolution, the health of normal human being has tainted a lot.**
   - **Over the past ten years, there is a heavy demise in the health (both physical and mental health) of the people.**
