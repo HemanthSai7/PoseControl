@@ -11,3 +11,8 @@
   - After your environment setup is complete, follow these steps.
   - Place the camera at a such a place and height such that the camera can see the entire body properly.
   - Run the program
+<div align="center">
+  
+### Meet the contributors 🚩
+  <img src="https://contrib.rocks/image?repo=HemanthSai7/PoseControl" />
+  </div>
